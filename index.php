@@ -48,8 +48,8 @@ function mailchimp_preferences(){
         define( 'MAILCHIMP_PREF_PATH', plugin_dir_path( __FILE__ ) );
     }
     
-	$server = 'us13'; // MailChimp server // $options['mc_pref_server'];
-	$apikey = '8e851e14516eaa7d4a43a8246e9cbc1c-us13'; // API Key // $options['mc_pref_apikey'];
+	$server = 'usxx'; // MailChimp server // $options['mc_pref_server'];
+	$apikey = 'xxxxxxxxxxxxxxxxxxxxxx'; // API Key // $options['mc_pref_apikey'];
 	$list_id = 'asdasd'; // List ID // $options['mc_pref_list_id']; // Maybe change this to a shortcode attribute?
 	
 	$user = 'user:' . $apikey;
