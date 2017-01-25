@@ -1,0 +1,46 @@
+<?php
+/*
+*   View for users who are logged in and are subscribed via MailChimp
+*
+*
+*/
+function mc_pref_view_logged_in_subbed(){
+   
+    ob_start();
+    ?>
+    <div class="mailchimp_dashboard"><?php
+
+    // Show the preference form
+    include(MAILCHIMP_PREF_PATH . '/forms/preference-form.php');
+
+    echo mc_pref_form_preferences();
+
+
+
+
+
+    if ( isset( $_POST['update'] ) ) {
+
+        // Run an update
+        //$message = mc_update();
+        echo $message;
+
+    }
+
+
+    if ( isset( $_POST['unsub'] ) ) {
+
+        // Run an unsubscribe :'(
+        //$message = mc_unsub();
+        echo $message;
+
+    }
+    ?>
+    </div>
+    <?php
+
+    $shortcode_output = ob_get_clean();
+    
+ 
+    return $shortcode_output;
+}
