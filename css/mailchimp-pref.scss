@@ -1,0 +1,29 @@
+div.mailchimp_dashboard {
+    
+    form{
+        margin-bottom: 15px;
+        padding: 10px;
+        border: 1px solid;
+    }
+
+    label{
+        width: 100px;
+        display: inline-block;
+        float: left;
+    }
+
+    label[for="mailchimp"]{
+        width: 250px;
+        margin-right: 10px;
+    }
+
+    input{
+        margin-bottom: 5px;
+    }
+
+    input[type="text"], input[type="email"], input[type="password"] {
+        width: 250px;
+    }
+    
+    
+}

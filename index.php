@@ -32,7 +32,7 @@ function mc_pref_textdomain() {
     function mc_pref_styles_scripts() {
         $plugin_url = plugin_dir_url( __FILE__ );
 
-        wp_enqueue_style( 'mailchimp-pref', $plugin_url . '/css/mailchimp_pref.min.css' ); // Main dashboard styles
+        wp_enqueue_style( 'mailchimp-pref', $plugin_url . '/css/mailchimp-pref.min.css' ); // Main dashboard styles
         wp_enqueue_style( 'mailchimp-pref-tabs', $plugin_url . '/css/mailchimp-tabs.min.css' ); // Styles for tabbed pages
         
         wp_enqueue_script('mailchimp-pref-tabs', $plugin_url . '/js/mailchimp-tabs.min.js', array('jquery')); // Script for tabbed pages

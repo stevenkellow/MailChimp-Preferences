@@ -1,0 +1,26 @@
+/* line 3, C:/Users/TEFL/Documents/GitHub/MailChimp-Preferences/css/mailchimp_pref.scss */
+div.mailchimp_dashboard form {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid; }
+
+/* line 9, C:/Users/TEFL/Documents/GitHub/MailChimp-Preferences/css/mailchimp_pref.scss */
+div.mailchimp_dashboard label {
+  width: 100px;
+  display: inline-block;
+  float: left; }
+
+/* line 15, C:/Users/TEFL/Documents/GitHub/MailChimp-Preferences/css/mailchimp_pref.scss */
+div.mailchimp_dashboard label[for="mailchimp"] {
+  width: 250px;
+  margin-right: 10px; }
+
+/* line 20, C:/Users/TEFL/Documents/GitHub/MailChimp-Preferences/css/mailchimp_pref.scss */
+div.mailchimp_dashboard input {
+  margin-bottom: 5px; }
+
+/* line 24, C:/Users/TEFL/Documents/GitHub/MailChimp-Preferences/css/mailchimp_pref.scss */
+div.mailchimp_dashboard input[type="text"], div.mailchimp_dashboard input[type="email"], div.mailchimp_dashboard input[type="password"] {
+  width: 250px; }
+
+/*# sourceMappingURL=mailchimp_pref.css.map */
