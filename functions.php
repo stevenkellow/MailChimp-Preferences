@@ -44,11 +44,11 @@ function mc_subscribe(){
         update_user_meta( $user_id, 'mailchimp_interests', $mailchimp_interests );
         update_user_meta( $user_id, 'mailchimp_update_time', $time ); // Store current timestamp in a user_meta as the last check
         
-        return 'Successfully subscribed!';
+        return __('Successfully subscribed!', 'mailchimp-prefs');
         
     } else {
         
-        return 'CURL error';
+        return __('CURL error', 'mailchimp-prefs');
         
     }
 
@@ -86,11 +86,11 @@ function mc_unsub(){
         update_user_meta( $user_id, 'mailchimp_update_time', $time ); // Store current timestamp in a user_meta as the last check
         
 
-        return 'Successfully unsubscribed.';
+        return __('Successfully unsubscribed', 'mailchimp-prefs');
         
     } else {
         
-        return 'CURL error';
+        return __('CURL error', 'mailchimp-prefs');
         
     }
 
@@ -129,11 +129,11 @@ function mc_update(){
         update_user_meta( $user_id, 'mailchimp_interests', $mailchimp_interests );
         update_user_meta( $user_id, 'mailchimp_update_time', $time ); // Store current timestamp in a user_meta as the last check
         
-        return 'Details successfully updated!';
+        return __('Details successfully updated.', 'mailchimp-prefs');
         
     } else {
         
-         return 'CURL error';
+        return __('CURL error', 'mailchimp-prefs');
         
     }
 
@@ -188,20 +188,20 @@ function mc_check(){
             update_user_meta( $user_id, 'mailchimp_update_time', $time ); // Store current timestamp in a user_meta as the last check
             update_user_meta( $user_id, 'mailchimp_interests', $mailchimp_interests );
             
-            return 'subscribed';
+            return __('Subscribed', 'mailchimp-prefs');
                 
                 
             } else {
                 
                 update_user_meta( $user_id, 'mailchimp_status', 'unsubscribed' );
                 
-                return 'unsubscribed';
+                return __('Unsubscribed', 'mailchimp-prefs');
                 
             }
             
         } else {
             
-            return 'CURL error';
+            return __('CURL error', 'mailchimp-prefs');
             
         }
         
@@ -245,11 +245,11 @@ function mc_register(){
             
                 if( $message !== 'error' ){
 
-                    return 'Successfully registered and subscribed!';
+                    return __('Successfully registered and subscribed!', 'mailchimp-prefs');
 
                 } else {
 
-                    return 'Successfully registered but subscription failed.';
+                    return __('Successfully registered but subscription failed', 'mailchimp-prefs');
 
                 }
                 
@@ -257,7 +257,7 @@ function mc_register(){
             } else {
                 
                 // Successfully created site account but not MailChimp
-                return 'Successfully registered';
+                return __('Successfully registered', 'mailchimp-prefs');
                 
                 
             }
@@ -266,7 +266,7 @@ function mc_register(){
         } else {
             
             // User wasn't created
-            return 'Registration failed.';
+            return __('Registration failed', 'mailchimp-prefs');
             
         }
     
@@ -274,7 +274,7 @@ function mc_register(){
     } else {
         
         // User already exists
-        return 'Already registered.  Please login.';
+        return __('Already registered', 'mailchimp-prefs');
         
     }
     

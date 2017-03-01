@@ -57,11 +57,11 @@ function mc_get_lists(){
             
         }
         
-        return 'Successfully subscribed!';
+        return __('Successfully subscribed!', 'mailchimp-prefs');
         
     } else {
         
-        return 'CURL error';
+        return __('CURL error', 'mailchimp-prefs');
         
     }
     

@@ -10,29 +10,29 @@ function mc_pref_form_register(){
 
     <form id="mailchimp-pref-registration-form" action="<?php echo get_the_permalink();?>" method="post" parsley-validate>
     <h3><?php _e( 'Register for our site', 'mailchimp-prefs' ); ?></h3>
-    <label for="email">E-mail address:</label>
-    <input type="email" name="email" data-parsley-trigger="change" parsley-required="true"><br/>
+    <label for="email"><?php _e( 'Email:', 'mailchimp-prefs'); ?></label>
+    <input type="email" name="email" parsley-trigger="change" parsley-required="true"><br/>
 
-    <label for="fname">First name:</label>
+    <label for="fname"><?php _e( 'First name:', 'mailchimp-prefs'); ?></label>
     <input type="text" name="fname"><br/>
 
-    <label for="lname">Last name:</label>
+    <label for="lname"><?php _e( 'Last name:', 'mailchimp-prefs'); ?></label>
     <input type="text" name="lname"><br/>
 
-    <label for="username">Username:</label>
+    <label for="username"><?php _e( 'Username:', 'mailchimp-prefs'); ?></label>
     <input type="text" name="username" parsley-required="true"><br/>
 
-    <label for="password">Password:</label>
+    <label for="password"><?php _e( 'Password:', 'mailchimp-prefs'); ?></label>
     <input type="password" name="password" id="mailchimp_pref_password"><br/>
         
-    <label for="password-verify">Confirm password:</label>
-    <input type="password" name="password-verify" data-parsley-trigger="change" parsley-equalto="#mailchimp_pref_password" parsley-required="true"><br/>
+    <label for="password-verify"><?php _e( 'Confirm password:', 'mailchimp-prefs'); ?></label>
+    <input type="password" name="password-verify" parsley-trigger="change" parsley-equalto="#mailchimp_pref_password" parsley-required="true"><br/>
 
-    <label for="mailchimp">Tick the box to be signed up to our mailing list</label>
+    <label for="mailchimp"><?php _e( 'Tick this box to be signed up to our mailing list:', 'mailchimp-prefs'); ?></label>
     <input type="checkbox" name="mailchimp"><br/>
 
 
-    <input type="submit" name="register" value="Register">
+    <input type="submit" name="register" value="<?php e_('Register', 'mailchimp-prefs'); ?>">
 
 
     </form>

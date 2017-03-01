@@ -13,6 +13,12 @@ Domain Path: /languages
 // Define plugin path constant
 define( 'MAILCHIMP_PREF_PATH', plugin_dir_path( __FILE__ ) );
 
+// Load plugin textdomain for translations
+add_action( 'init', 'mc_pref_textdomain' );
+function mc_pref_textdomain() {
+    load_plugin_textdomain( 'mailchimp-prefs', false, MAILCHIMP_PREF_PATH . '/lang' ); 
+}
+
  if( is_admin() ){
 	    
     // Call in the options page for the admin
@@ -26,10 +32,10 @@ define( 'MAILCHIMP_PREF_PATH', plugin_dir_path( __FILE__ ) );
     function mc_pref_styles_scripts() {
         $plugin_url = plugin_dir_url( __FILE__ );
 
-        wp_enqueue_style( 'mailchimp-pref', $plugin_url . '/css/mailchimp_pref.css' ); // Main dashboard styles
-        wp_enqueue_style( 'mailchimp-pref-tabs', $plugin_url . '/css/mailchimp-tabs.css' ); // Styles for tabbed pages
+        wp_enqueue_style( 'mailchimp-pref', $plugin_url . '/css/mailchimp_pref.min.css' ); // Main dashboard styles
+        wp_enqueue_style( 'mailchimp-pref-tabs', $plugin_url . '/css/mailchimp-tabs.min.css' ); // Styles for tabbed pages
         
-        wp_enqueue_script('mailchimp-pref-tabs', $plugin_url . '/js/mailchimp-tabs.js', array('jquery')); // Script for tabbed pages
+        wp_enqueue_script('mailchimp-pref-tabs', $plugin_url . '/js/mailchimp-tabs.min.js', array('jquery')); // Script for tabbed pages
         wp_enqueue_script('parsley', $plugin_url . '/js/parsley.min.js', array('jquery')); // Parsley for form validation
     }
         

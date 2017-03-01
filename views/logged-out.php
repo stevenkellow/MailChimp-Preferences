@@ -54,7 +54,7 @@ function mc_pref_view_logged_out(){
         $signup = $_POST['mailchimp'];
 
         // mc_register( $username, $password, $email, $fname, $lname);
-        echo 'Subscribed'; // $message;
+        echo __('Subscribed', 'mailchimp-prefs'); // $message;
 
     }
 

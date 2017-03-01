@@ -56,7 +56,7 @@ function mc_pref_server_render() {
 
     // For each server option check if it's selected and then pre-select it
     ?>
-    <label for="server_dropdown">Server:</label>
+    <label for="server_dropdown"><?php e_('Server:', 'mailchimp-prefs'); ?></label>
     <select name="server_dropdown">
     <?php
 
@@ -93,7 +93,7 @@ function mc_pref_apikey_render() {
 
 	$options = get_option( 'mc_pref_settings' );
 	?>
-    <label for="mc_pref_settings[mc_pref_apikey]">API Key:</label>
+    <label for="mc_pref_settings[mc_pref_apikey]"><?php e_('API key:', 'mailchimp-prefs'); ?></label>
 	<input type='text' name='mc_pref_settings[mc_pref_apikey]' value='<?php echo $options['mc_pref_apikey']; ?>'>
 	<?php
 
@@ -104,7 +104,7 @@ function mc_pref_list_id_render() {
 
 	$options = get_option( 'mc_pref_settings' );
 	?>
-    <label for="mc_pref_settings[mc_pref_list_id]">List ID:</label>
+    <label for="mc_pref_settings[mc_pref_list_id]"><?php e_('List ID:', 'mailchimp-prefs'); ?></label>
 	<input type='text' name='mc_pref_settings[mc_pref_list_id]' value='<?php echo $options['mc_pref_list_id']; ?>'>
 	<?php
 
@@ -123,7 +123,7 @@ function mc_pref_options_page() {
 	?>
 	<form action='options.php' method='post'>
 
-		<h2>MailChimp Preferences</h2>
+		<h2><?php e_('MailChimp Preferences', 'mailchimp-prefs'); ?></h2>
 
 		<?php
 		settings_fields( 'pluginPage' );
