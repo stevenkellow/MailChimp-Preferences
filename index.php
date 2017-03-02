@@ -2,12 +2,12 @@
 /*
 Plugin Name: MailChimp Preferences Dashboard
 Plugin URI: http://www.stevenkellow.com/plugins/mailchimp/
-Description: Custom functionality to check and update MailChimp subscriber settings on front end
+Description: Let users sign up and manage their preferences on your MailChimp lists.
 Version: 0.1.0
 Author: Steven Kellow
 Author URI: http://www.stevenkellow.com
 Text Domain: mailchimp-prefs
-Domain Path: /languages
+Domain Path: /lang
 */
 
 // Define plugin path constant
@@ -19,10 +19,11 @@ function mc_pref_textdomain() {
     load_plugin_textdomain( 'mailchimp-prefs', false, MAILCHIMP_PREF_PATH . '/lang' ); 
 }
 
+// Check what pages, scripts and styles to call in
  if( is_admin() ){
 	    
     // Call in the options page for the admin
-    include(MAILCHIMP_PREF_PATH . 'options.php');
+    include_once( MAILCHIMP_PREF_PATH . 'options.php' );
 
 } else {
 
@@ -35,8 +36,8 @@ function mc_pref_textdomain() {
         wp_enqueue_style( 'mailchimp-pref', $plugin_url . '/css/mailchimp-pref.min.css' ); // Main dashboard styles
         wp_enqueue_style( 'mailchimp-pref-tabs', $plugin_url . '/css/mailchimp-tabs.min.css' ); // Styles for tabbed pages
         
-        wp_enqueue_script('mailchimp-pref-tabs', $plugin_url . '/js/mailchimp-tabs.min.js', array('jquery')); // Script for tabbed pages
-        wp_enqueue_script('parsley', $plugin_url . '/js/parsley.min.js', array('jquery')); // Parsley for form validation
+        wp_enqueue_script( 'mailchimp-pref-tabs', $plugin_url . '/js/mailchimp-tabs.min.js', array('jquery')); // Script for tabbed pages
+        wp_enqueue_script( 'parsley', $plugin_url . '/js/parsley.min.js', array('jquery')); // Parsley for form validation
     }
         
 }
@@ -69,10 +70,10 @@ function mailchimp_preferences(){
     /*---------------------------------------------*/
 	
 	// Call in the functions
-	include(MAILCHIMP_PREF_PATH . 'functions.php');
+	include_once( MAILCHIMP_PREF_PATH . 'functions.php' );
     
 	// Call in the curl shortcut
-	include(MAILCHIMP_PREF_PATH . 'mailchimp_curl.php');
+	include_once( MAILCHIMP_PREF_PATH . 'mailchimp_curl.php' );
     
     /*---------------------------------------------*/
 	
@@ -82,7 +83,7 @@ function mailchimp_preferences(){
     
     if( ! is_user_logged_in() ){
         
-        include(MAILCHIMP_PREF_PATH . '/views/logged-out.php');
+        include_once( MAILCHIMP_PREF_PATH . '/views/logged-out.php' );
         
         $shortcode_output = mc_pref_view_logged_out();
         
@@ -99,7 +100,7 @@ function mailchimp_preferences(){
             if( $status == 'subscribed'){
                 
                 // Subscribed and logged in - so show user preferences
-                include(MAILCHIMP_PREF_PATH . '/views/logged-in-subbed.php');
+                include_once( MAILCHIMP_PREF_PATH . '/views/logged-in-subbed.php' );
                 
                 $shortcode_output = mc_pref_view_logged_in_subbed();
                 
@@ -107,7 +108,7 @@ function mailchimp_preferences(){
             } else {
                 
                 // Logged in but previously unsubscribed - so show resubscribe button
-                include(MAILCHIMP_PREF_PATH . '/views/logged-in-unsubbed.php');
+                include_once( MAILCHIMP_PREF_PATH . '/views/logged-in-unsubbed.php' );
                 
                 $shortcode_output = mc_pref_view_logged_in_unsubbed();
                 
@@ -117,7 +118,7 @@ function mailchimp_preferences(){
         } else {
             
             // Logged in but haven't signed up to MailChimp
-            include(MAILCHIMP_PREF_PATH . '/views/logged-in-not-registered.php');
+            include_once( MAILCHIMP_PREF_PATH . '/views/logged-in-not-registered.php' );
             
             $shortcode_output = mc_pref_view_logged_in_not_registered();
             
