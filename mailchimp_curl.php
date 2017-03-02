@@ -44,7 +44,7 @@ function mailchimp_curl($url, $user_auth, $rest, $input){
     } else {
         curl_close($ch);
         // Turn response into stuff we can use
-        $data = json_decode( $response );
+        $data = json_decode( $response, true );
     }
 
 
