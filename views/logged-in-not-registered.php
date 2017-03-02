@@ -12,7 +12,7 @@ function mc_pref_view_logged_in_not_registered(){
     // Call in the MailChimp registration form
     include(MAILCHIMP_PREF_PATH . 'forms/subscribe-form.php');
 
-    echo mc_pref_form_subscribe();
+    echo mc_pref_form_subscribe( $mailchimp_auth, $userdata );
 
 
 

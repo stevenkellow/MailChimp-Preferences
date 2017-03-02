@@ -23,35 +23,39 @@ function mc_pref_view_logged_out(){
 
     // If logging in/registering
     include(MAILCHIMP_PREF_PATH . '/forms/login-form.php');
-    echo mc_pref_form_login();
+    echo mc_pref_form_login( $mailchimp_auth );
 
     // If registering call
     include(MAILCHIMP_PREF_PATH . '/forms/registration-form.php');
-    echo mc_pref_form_register();
+    echo mc_pref_form_register($mailchimp_auth );
 
     // If signing up to newsletter without account
     include(MAILCHIMP_PREF_PATH . '/forms/subscribe-form.php');
-    echo mc_pref_form_subscribe();
+    echo mc_pref_form_subscribe( $mailchimp_auth );
 
 
 
     if ( isset( $_POST['login'] ) ) {
 
         // Log user in
-        //mc_subscribe();
+        //mc_subscribe( $mailchimp_auth, $userdata );
 
     }
 
     if ( isset( $_POST['register'] ) ) {
+        
+         // Set up the userdata to create
+        $userdata = array(
+            'user_login'  =>  $_POST['username'],
+            'user_email'  =>  $_POST['email'],
+            'user_pass'   =>  $_POST['password'],  // When creating an user, `user_pass` is expected.
+            'first_name'  =>  $_POST['fname'],
+            'last_name'   =>  $_POST['lname']
+        );
 
-        // Run a resgister - mc_register() - which will include a mc_subscribe()
-
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-        $email = $_POST['email'];
-        $fname = $_POST['fname'];
-        $lname = $_POST['lname'];
         $signup = $_POST['mailchimp'];
+        
+        // Run a resgister - mc_register( $mailchimp_auth, $userdata, $signup ) - which will include a mc_subscribe()
 
         // mc_register( $username, $password, $email, $fname, $lname);
         echo __('Subscribed', 'mailchimp-prefs'); // $message;

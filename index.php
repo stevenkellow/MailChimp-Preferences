@@ -55,17 +55,17 @@ function mailchimp_preferences(){
         define( 'MAILCHIMP_PREF_PATH', plugin_dir_path( __FILE__ ) );
     }
     
-	$server = 'usxx'; // MailChimp server // $options['mc_pref_server'];
-	$apikey = 'xxxxxxxxxxxxxxxxxxxxxx'; // API Key // $options['mc_pref_apikey'];
-	$list_id = 'asdasd'; // List ID // $options['mc_pref_list_id']; // Maybe change this to a shortcode attribute?
+    // Create class of MailChimp authorisation details
+    $mailchimp_auth = new stdClass();
+    
+	$mailchimp_auth->server = 'usxx'; // MailChimp server // $options['mc_pref_server'];
+	$mailchimp_auth->api = 'xxxxxxxxxxxxxxxxxxxxxx'; // API Key // $options['mc_pref_apikey'];
+	$mailchimp_auth->list_id = 'asdasd'; // List ID // $options['mc_pref_list_id']; // Maybe change this to a shortcode attribute?
 	
-	$user = 'user:' . $apikey;
+	$mailchimp_auth->name = 'user:' . $apikey;
 
 	$user_id = get_current_user_id();
 	$userdata = get_userdata( $user_id );
-	$user_email = $userdata->user_email;
-    $user_fname = $userdata->first_name;
-    $user_lname = $userdata->last_name;
     
     /*---------------------------------------------*/
 	

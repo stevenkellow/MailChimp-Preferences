@@ -13,13 +13,13 @@ function mc_pref_view_logged_in_unsubbed(){
     // Include the resubscribe
     include(MAILCHIMP_PREF_PATH . '/forms/re-subscribe-form.php');
 
-    echo mc_pref_form_resubscribe();
+    echo mc_pref_form_resubscribe( $mailchimp_auth, $userdata );
 
 
     if ( isset( $_POST['subscribe'] ) ) {
 
         // Run an update
-        //$message = mc_subscribe();
+        //$message = mc_subscribe( $mailchimp_auth, $userdata );
         echo $message;
 
     }

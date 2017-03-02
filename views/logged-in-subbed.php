@@ -13,7 +13,7 @@ function mc_pref_view_logged_in_subbed(){
     // Show the preference form
     include(MAILCHIMP_PREF_PATH . '/forms/preference-form.php');
 
-    echo mc_pref_form_preferences();
+    echo mc_pref_form_preferences( $mailchimp_auth, $userdata );
 
 
 

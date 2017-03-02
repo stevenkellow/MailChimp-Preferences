@@ -6,11 +6,11 @@
 */
 
 if (!function_exists('mailchimp_curl')) {
-function mailchimp_curl($url, $user, $rest, $input){
+function mailchimp_curl($url, $user_auth, $rest, $input){
 
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url); // The URL we're using to get/send data
-    curl_setopt($ch, CURLOPT_USERPWD, $user); // Add the API authentication
+    curl_setopt($ch, CURLOPT_USERPWD, $user_auth); // Add the API authentication
     
     if( $rest == 'POST' ){
         curl_setopt($ch, CURLOPT_POST, true); // Send a post request to the server
