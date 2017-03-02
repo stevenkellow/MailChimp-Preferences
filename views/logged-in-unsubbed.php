@@ -4,14 +4,14 @@
 *
 *
 */
-function mc_pref_view_logged_in_unsubbed(){
+function mc_pref_view_logged_in_unsubbed( $mailchimp_auth, $userdata ){
    
     ob_start();
     ?>
     <div class="mailchimp_dashboard"><?php
 
     // Include the resubscribe
-    include(MAILCHIMP_PREF_PATH . '/forms/re-subscribe-form.php');
+    include_once( MAILCHIMP_PREF_PATH . '/forms/re-subscribe-form.php');
 
     echo mc_pref_form_resubscribe( $mailchimp_auth, $userdata );
 

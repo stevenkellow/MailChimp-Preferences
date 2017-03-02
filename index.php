@@ -85,7 +85,7 @@ function mailchimp_preferences(){
         
         include_once( MAILCHIMP_PREF_PATH . '/views/logged-out.php' );
         
-        $shortcode_output = mc_pref_view_logged_out();
+        $shortcode_output = mc_pref_view_logged_out( $mailchimp_auth, $userdata );
         
         
     } else {
@@ -102,7 +102,7 @@ function mailchimp_preferences(){
                 // Subscribed and logged in - so show user preferences
                 include_once( MAILCHIMP_PREF_PATH . '/views/logged-in-subbed.php' );
                 
-                $shortcode_output = mc_pref_view_logged_in_subbed();
+                $shortcode_output = mc_pref_view_logged_in_subbed( $mailchimp_auth, $userdata );
                 
                 
             } else {
@@ -110,7 +110,7 @@ function mailchimp_preferences(){
                 // Logged in but previously unsubscribed - so show resubscribe button
                 include_once( MAILCHIMP_PREF_PATH . '/views/logged-in-unsubbed.php' );
                 
-                $shortcode_output = mc_pref_view_logged_in_unsubbed();
+                $shortcode_output = mc_pref_view_logged_in_unsubbed( $mailchimp_auth, $userdata );
                 
             }
             
@@ -120,7 +120,7 @@ function mailchimp_preferences(){
             // Logged in but haven't signed up to MailChimp
             include_once( MAILCHIMP_PREF_PATH . '/views/logged-in-not-registered.php' );
             
-            $shortcode_output = mc_pref_view_logged_in_not_registered();
+            $shortcode_output = mc_pref_view_logged_in_not_registered( $mailchimp_auth, $userdata );
             
         }
            

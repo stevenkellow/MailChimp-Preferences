@@ -4,7 +4,7 @@
 *
 *
 */
-function mc_pref_view_logged_out(){
+function mc_pref_view_logged_out( $mailchimp_auth, $userdata ){
     
     ob_start();
     ?>
@@ -22,15 +22,15 @@ function mc_pref_view_logged_out(){
 
 
     // If logging in/registering
-    include(MAILCHIMP_PREF_PATH . '/forms/login-form.php');
+    include_once( MAILCHIMP_PREF_PATH . '/forms/login-form.php');
     echo mc_pref_form_login( $mailchimp_auth );
 
     // If registering call
-    include(MAILCHIMP_PREF_PATH . '/forms/registration-form.php');
+    include_once( MAILCHIMP_PREF_PATH . '/forms/registration-form.php');
     echo mc_pref_form_register($mailchimp_auth );
 
     // If signing up to newsletter without account
-    include(MAILCHIMP_PREF_PATH . '/forms/subscribe-form.php');
+    include_once( MAILCHIMP_PREF_PATH . '/forms/subscribe-form.php');
     echo mc_pref_form_subscribe( $mailchimp_auth );
 
 

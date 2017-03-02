@@ -4,14 +4,14 @@
 *
 *
 */
-function mc_pref_view_logged_in_subbed(){
+function mc_pref_view_logged_in_subbed( $mailchimp_auth, $userdata ){
    
     ob_start();
     ?>
     <div class="mailchimp_dashboard"><?php
 
     // Show the preference form
-    include(MAILCHIMP_PREF_PATH . '/forms/preference-form.php');
+    include_once( MAILCHIMP_PREF_PATH . '/forms/preference-form.php');
 
     echo mc_pref_form_preferences( $mailchimp_auth, $userdata );
 
