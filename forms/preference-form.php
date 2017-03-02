@@ -29,7 +29,7 @@ function mc_pref_form_preferences(){
             // Echo an input box with label for the interest, and check it if it's been ticked in the user's info
 
             echo '<label for="' . $interest['id'] . '">' . $interest['name'] . ' : </label>';
-            echo '<input type="checkbox" name="' . $interest['id'] . '" value="' . $interest['name'] . '" . ' if( in_array( $interest['id'], $user_interests ){ echo 'checked' } . '><br/>';
+            echo '<input type="checkbox" name="' . $interest['id'] . '" value="' . $interest['name'] . '" . ' . (in_array( $interest['id'], $user_interests )?'checked':'') . '><br/>';
 
 
         }

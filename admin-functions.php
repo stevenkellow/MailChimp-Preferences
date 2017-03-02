@@ -36,7 +36,7 @@ function mc_get_lists(){
             if( ! $current_list ){
                 
                 // Add the MailChimp List details to the array
-                $mailchimp_lists[] = $list_id => array( "list_name" => $list_name, "interests" => '' );
+                $mailchimp_lists[$list_id] = array( "list_name" => $list_name, "interests" => '' );
                 
             } else {
                 
