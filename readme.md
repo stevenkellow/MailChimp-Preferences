@@ -18,8 +18,8 @@ It's easy to use our functions to register users, subscribe them to MailChimp, u
 
 **Our functions include:**
 
-mc_subscribe() - subscribe users
-mc_unsub() - unsubscribe users
-mc_update() - update user's details in MailChimp
-mc_check() - make sure user is still subscribed
-mc_register() - register a WordPress user and subscribe to MailChimp
+mc_subscribe() - subscribe users  
+mc_unsub() - unsubscribe users  
+mc_update() - update user's details in MailChimp  
+mc_check() - make sure user is still subscribed  
+mc_register() - register a WordPress user and subscribe to MailChimp  
