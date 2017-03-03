@@ -37,9 +37,24 @@ function mc_pref_view_logged_out( $mailchimp_auth, $userdata ){
 
     if ( isset( $_POST['login'] ) ) {
 
-        // Log user in
-        //mc_subscribe( $mailchimp_auth, $userdata );
+        function mc_pref_login(){
+            // Log user in
+            $result = wp_signon( array( 'user_login' => $_POST['username'], 'user_password' => $_POST['password'] ) );
 
+            if( is_wp_error( $result ) ){
+
+                echo '<h1>NOOOO</h1>';
+
+            } else {
+                
+                echo '<h1>' . $result . '</h1>';
+                
+            }
+            
+        }
+        
+        // Run before the headers and cookies are sent.
+        add_action( 'after_setup_theme', 'mc_pref_login' );
     }
 
     if ( isset( $_POST['register'] ) ) {
@@ -55,7 +70,8 @@ function mc_pref_view_logged_out( $mailchimp_auth, $userdata ){
 
         $signup = $_POST['mailchimp'];
         
-        // Run a resgister - mc_register( $mailchimp_auth, $userdata, $signup ) - which will include a mc_subscribe()
+        // Run a resgister
+        mc_register( $mailchimp_auth, $userdata, $signup ); // which will include a mc_subscribe()
 
         // mc_register( $username, $password, $email, $fname, $lname);
         echo __('Subscribed', 'mailchimp-prefs'); // $message;

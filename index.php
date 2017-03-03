@@ -12,6 +12,7 @@ Domain Path: /lang
 
 // Define plugin path constant
 define( 'MAILCHIMP_PREF_PATH', plugin_dir_path( __FILE__ ) );
+define( 'MAILCHIMP_PREF_URL', plugin_dir_url( __FILE__ ) );
 
 // Load plugin textdomain for translations
 add_action( 'init', 'mc_pref_textdomain' );
@@ -31,19 +32,19 @@ function mc_pref_textdomain() {
     // Call in the front end styles
     add_action( 'wp_enqueue_scripts', 'mc_pref_styles_scripts' );
     function mc_pref_styles_scripts() {
-        $plugin_url = plugin_dir_url( __FILE__ );
 
-        wp_enqueue_style( 'mailchimp-pref', $plugin_url . '/css/mailchimp-pref.min.css' ); // Main dashboard styles
-        wp_enqueue_style( 'mailchimp-pref-tabs', $plugin_url . '/css/mailchimp-tabs.min.css' ); // Styles for tabbed pages
+        wp_enqueue_style( 'mailchimp-pref', MAILCHIMP_PREF_URL . 'css/mailchimp-pref.min.css' ); // Main dashboard styles
+        wp_enqueue_style( 'mailchimp-pref-tabs', MAILCHIMP_PREF_URL . 'css/mailchimp-tabs.min.css' ); // Styles for tabbed pages
         
-        wp_enqueue_script( 'mailchimp-pref-tabs', $plugin_url . '/js/mailchimp-tabs.min.js', array('jquery')); // Script for tabbed pages
-        wp_enqueue_script( 'parsley', $plugin_url . '/js/parsley.min.js', array('jquery')); // Parsley for form validation
+        wp_enqueue_script( 'mailchimp-pref-tabs', MAILCHIMP_PREF_PATH . 'js/mailchimp-tabs.min.js', array('jquery')); // Script for tabbed pages
+        wp_enqueue_script( 'parsley', MAILCHIMP_PREF_PATH . 'js/parsley.min.js', array('jquery')); // Parsley for form validation
     }
         
 }
 
 // Wrap everything in a nice shortcode to make it easy to use
 add_shortcode( 'mailchimp_dashboard', 'mailchimp_preferences' );
+add_shortcode( 'mailchimp-dashboard', 'mailchimp_preferences' );
 function mailchimp_preferences(){
 	
     // $options = get_option( 'mc_pref_settings' );
@@ -58,9 +59,11 @@ function mailchimp_preferences(){
     // Create class of MailChimp authorisation details
     $mailchimp_auth = new stdClass();
     
-	$mailchimp_auth->server = 'usxx'; // MailChimp server // $options['mc_pref_server'];
-	$mailchimp_auth->api = 'xxxxxxxxxxxxxxxxxxxxxx'; // API Key // $options['mc_pref_apikey'];
-	$mailchimp_auth->list_id = 'asdasd'; // List ID // $options['mc_pref_list_id']; // Maybe change this to a shortcode attribute?
+    $options = get_option( 'mc_pref_settings' );
+    
+	$mailchimp_auth->server = $options['mc_pref_server']; // MailChimp server
+	$mailchimp_auth->api = $options['mc_pref_apikey']; // API Key
+	$mailchimp_auth->list_id = $options['mc_pref_list_id']; // List ID
 	
 	$mailchimp_auth->name = 'user:' . $apikey;
 

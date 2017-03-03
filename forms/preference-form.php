@@ -3,7 +3,7 @@
 *   Form for users to manage their preferences
 *
 */
-function mc_pref_form_preferences(){
+function mc_pref_form_preferences( $mailchimp_auth, $userdata ){
    
     ob_start();
     ?>

@@ -3,7 +3,7 @@
 *   Form for re-subscribing users
 *
 */
-function mc_pref_form_resubscribe(){
+function mc_pref_form_resubscribe( $mailchimp_auth, $userdata ){
    
     ob_start();
     ?>
@@ -19,7 +19,7 @@ function mc_pref_form_resubscribe(){
     <input type="text" name="lname" value="<?php echo $user_lname; ?>"><br/>
 
 
-    <input type="submit" name="subscribe" value="<?php e_('Re-subscribe', 'mailchimp-prefs'); ?>">
+    <input type="submit" name="subscribe" value="<?php _e('Re-subscribe', 'mailchimp-prefs'); ?>">
 
 
     </form>

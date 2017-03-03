@@ -16,7 +16,7 @@ function mc_pref_form_login(){
     <input type="password" name="password" parsley-required="true"><br/>
 
 
-    <input type="submit" value="Log in">
+    <input type="submit" name="login" value="Log in">
 
 
     </form>
