@@ -20,7 +20,7 @@ function mailchimp_curl($url, $user_auth, $rest, $input){
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT'); // Send a put request to the server to update the listing
     } // If POST or PATCH isn't set then we're using a GET request, which is the default
     
-    curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']); // Tell server to expect JSON
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array( 'Content-Type: application/json', 'Content-Length: ' . strlen( $input ) ) ); // Tell server to expect JSON
     curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 15); // Timeout when connecting to the server
     curl_setopt($ch, CURLOPT_TIMEOUT, 30); // Timeout when retrieving from the server
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); // We want to capture the data returned, so set this to true
