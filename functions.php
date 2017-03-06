@@ -62,9 +62,22 @@ function mc_unsub( $mailchimp_auth, $userdata ){
 	// Unsub
 
 	// Get the user's preferred MailChimp email
-    $user_email = get_user_meta( $userdata->id, 'mailchimp_email' );
+    if( $mailchimp_id = get_user_meta( $userdata->id, 'mailchimp_id' ) ){
+        
+        $user_hash = $mailchimp_id;
+        
+    } elseif( $user_email = get_user_meta( $userdata->id, 'mailchimp_email' ) ) {
+       
+        $user_hash = md5( strtolower( $user_email ) );
+        
+    } else {
+        
+        $user_email = get_user_meta( $userdata->user_email );
+        $user_hash = md5( strtolower( $user_email ) );
+        
+    }
 
-	$url = 'https://' . $mailchimp_auth->server . '.api.mailchimp.com/3.0/lists/' . $mailchimp_auth->list_id . '/members/' . $user_email;
+	$url = 'https://' . $mailchimp_auth->server . '.api.mailchimp.com/3.0/lists/' . $mailchimp_auth->list_id . '/members/' . $user_hash;
 	$rest = 'PATCH';
 
 	// Tell MailChimp we're unsubbing this email address
@@ -104,9 +117,22 @@ function mc_update( $mailchimp_auth, $userdata ){
 	// Add/Update interests
 
 	// Get the user's preferred MailChimp email
-    $user_email = get_user_meta( $userdata->id, 'mailchimp_email' );
+    if( $mailchimp_id = get_user_meta( $userdata->id, 'mailchimp_id' ) ){
+        
+        $user_hash = $mailchimp_id;
+        
+    } elseif( $user_email = get_user_meta( $userdata->id, 'mailchimp_email' ) ) {
+       
+        $user_hash = md5( strtolower( $user_email ) );
+        
+    } else {
+        
+        $user_email = get_user_meta( $userdata->user_email );
+        $user_hash = md5( strtolower( $user_email ) );
+        
+    }
 
-	$url = 'https://' . $mailchimp_auth->server . '.api.mailchimp.com/3.0/lists/' . $mailchimp_auth->list_id . '/members/' . $user_email;
+	$url = 'https://' . $mailchimp_auth->server . '.api.mailchimp.com/3.0/lists/' . $mailchimp_auth->list_id . '/members/' . $user_hash;
 	$rest = 'PATCH';
 
 	$interests = get_user_meta( $userdata->id, $mailchimp_interests );
@@ -160,9 +186,22 @@ function mc_check( $mailchimp_auth, $userdata ){
     if( $time_diff > 86400 ){
     
         // Get the user's preferred MailChimp email
-        $user_email = get_user_meta( $userdata->id, 'mailchimp_email' );
+        if( $mailchimp_id = get_user_meta( $userdata->id, 'mailchimp_id' ) ){
 
-        $url = 'https://' . $mailchimp_auth->server . '.api.mailchimp.com/3.0/lists/' . $mailchimp_auth->list_id . '/members/' . $user_email;
+            $user_hash = $mailchimp_id;
+
+        } elseif( $user_email = get_user_meta( $userdata->id, 'mailchimp_email' ) ) {
+
+            $user_hash = md5( strtolower( $user_email ) );
+
+        } else {
+
+            $user_email = get_user_meta( $userdata->user_email );
+            $user_hash = md5( strtolower( $user_email ) );
+
+        }
+
+        $url = 'https://' . $mailchimp_auth->server . '.api.mailchimp.com/3.0/lists/' . $mailchimp_auth->list_id . '/members/' . $user_hash;
         $rest = 'GET';
 
         // Run the checker
@@ -193,11 +232,15 @@ function mc_check( $mailchimp_auth, $userdata ){
             return __('Subscribed', 'mailchimp-prefs');
                 
                 
-            } else {
+            } elseif ( $data['status'] == 'unsubscribed' ){
                 
                 update_user_meta( $userdata->id, 'mailchimp_status', 'unsubscribed' );
                 
                 return __('Unsubscribed', 'mailchimp-prefs');
+                
+            } else{
+                
+                return __('Request error', 'mailchimp-prefs');
                 
             }
             
@@ -233,8 +276,11 @@ function mc_register( $mailchimp_auth, $userdata, $signup ){
             // If the user wanted to sign up to MailChimp
             if( $signup == 1 ){
                 
+                // Turn the $userdata array into an object so it appears like it would through WP
+                $userdata = (object) $userdata;
+                
                 // Sign them up to MailChimp
-                $message = mc_subscribe( $mailchimp_auth, $userdata );
+                // $message = mc_subscribe( $mailchimp_auth, $userdata );
             
                 if( $message !== 'error' ){
 

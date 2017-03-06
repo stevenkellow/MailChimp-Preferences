@@ -16,7 +16,7 @@ function mc_pref_settings_init() {
 
 	add_settings_section(
 		'mc_pref_pluginPage_section', 
-		__( 'Your section description', 'mailchimp-preferences' ), 
+		__( 'MailChimp account settings', 'mailchimp-preferences' ), 
 		'mc_pref_settings_section_callback', 
 		'pluginPage'
 	);
@@ -56,16 +56,18 @@ function mc_pref_server_render() {
 
     // For each server option check if it's selected and then pre-select it
     ?>
-    <label for="server_dropdown"><?php e_('Server:', 'mailchimp-prefs'); ?></label>
-    <select name="server_dropdown">
+    <label for="mc_pref_settings[mc_pref_server]"><?php _e('Server:', 'mailchimp-prefs'); ?></label>
+    <select name="mc_pref_settings[mc_pref_server]">
     <?php
 
     // Get the currently set server
     $value = $options['mc_pref_server'];
 
     for ($i = 1; $i <= 14; $i++) {
+        
+        $curr_server = 'us' . $i;
 
-        if( $i == $value ){
+        if( $curr_server == $value ){
 
              echo '<option value="us' . $i . '" selected>us' . $i . '</option>' . PHP_EOL;
 
@@ -93,7 +95,7 @@ function mc_pref_apikey_render() {
 
 	$options = get_option( 'mc_pref_settings' );
 	?>
-    <label for="mc_pref_settings[mc_pref_apikey]"><?php e_('API key:', 'mailchimp-prefs'); ?></label>
+    <label for="mc_pref_settings[mc_pref_apikey]"><?php _e('API key:', 'mailchimp-prefs'); ?></label>
 	<input type='text' name='mc_pref_settings[mc_pref_apikey]' value='<?php echo $options['mc_pref_apikey']; ?>'>
 	<?php
 
@@ -104,7 +106,7 @@ function mc_pref_list_id_render() {
 
 	$options = get_option( 'mc_pref_settings' );
 	?>
-    <label for="mc_pref_settings[mc_pref_list_id]"><?php e_('List ID:', 'mailchimp-prefs'); ?></label>
+    <label for="mc_pref_settings[mc_pref_list_id]"><?php _e('List ID:', 'mailchimp-prefs'); ?></label>
 	<input type='text' name='mc_pref_settings[mc_pref_list_id]' value='<?php echo $options['mc_pref_list_id']; ?>'>
 	<?php
 
@@ -123,7 +125,7 @@ function mc_pref_options_page() {
 	?>
 	<form action='options.php' method='post'>
 
-		<h2><?php e_('MailChimp Preferences', 'mailchimp-prefs'); ?></h2>
+		<h2><?php _e('MailChimp Preferences', 'mailchimp-prefs'); ?></h2>
 
 		<?php
 		settings_fields( 'pluginPage' );

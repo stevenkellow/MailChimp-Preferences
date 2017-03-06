@@ -32,7 +32,7 @@ function mc_pref_form_register(){
     <input type="checkbox" name="mailchimp"><br/>
 
 
-    <input type="submit" name="register" value="<?php e_('Register', 'mailchimp-prefs'); ?>">
+    <input type="submit" name="register" value="<?php _e('Register', 'mailchimp-prefs'); ?>">
 
 
     </form>
