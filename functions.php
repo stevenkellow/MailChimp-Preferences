@@ -135,9 +135,10 @@ function mc_update( $mailchimp_auth, $userdata ){
 	$url = 'https://' . $mailchimp_auth->server . '.api.mailchimp.com/3.0/lists/' . $mailchimp_auth->list_id . '/members/' . $user_hash;
 	$rest = 'PATCH';
 
+    // Get user interests saved on WP side
 	$interests = get_user_meta( $userdata->id, $mailchimp_interests );
 
-	// Set up the response to tsend to MailChimp
+	// Set up the response to send to MailChimp
 	$content = array( 'email_address' => $user_email, 'interests' => $interests);
 
 	$input = json_encode( $content ); // Make it so MailChimp understands
