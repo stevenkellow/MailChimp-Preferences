@@ -57,7 +57,7 @@ function mc_get_lists(){
             
         }
         
-        return __('Successfully subscribed!', 'mailchimp-prefs');
+        return __('Lists successfully retrieved', 'mailchimp-prefs');
         
     } else {
         
@@ -88,7 +88,7 @@ function mc_get_list_details(){
         // Get the lists saved in the site options
         get_option( 'mailchimp_pref_lists' );
         
-        return 'Successfully subscribed!';
+        return 'List details successfully retrieved!';
         
     } else {
         
