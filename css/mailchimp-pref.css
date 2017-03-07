@@ -27,4 +27,8 @@ div.mailchimp_dashboard input[type="text"], div.mailchimp_dashboard input[type="
 div.mailchimp_dashboard h4 {
   margin-top: 10px; }
 
+/* line 36, C:/Users/TEFL/Documents/GitHub/MailChimp-Preferences/css/mailchimp-pref.scss */
+div.mailchimp_pref_wrap #apikey {
+  min-width: 300px; }
+
 /*# sourceMappingURL=mailchimp-pref.css.map */

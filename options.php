@@ -12,37 +12,37 @@ function mc_pref_add_admin_menu(  ) {
 
 function mc_pref_settings_init() { 
 
-	register_setting( 'pluginPage', 'mc_pref_settings' );
+	register_setting( 'mcPrefSettings', 'mc_pref_settings' );
 
 	add_settings_section(
-		'mc_pref_pluginPage_section', 
+		'mc_pref_mcPrefSettings_section', 
 		__( 'MailChimp account settings', 'mailchimp-preferences' ), 
 		'mc_pref_settings_section_callback', 
-		'pluginPage'
+		'mcPrefSettings'
 	);
 
 	add_settings_field( 
 		'mc_pref_server', 
 		__( 'Choose your MailChimp server type', 'mailchimp-preferences' ), 
 		'mc_pref_server_render', 
-		'pluginPage', 
-		'mc_pref_pluginPage_section' 
+		'mcPrefSettings', 
+		'mc_pref_mcPrefSettings_section' 
 	);
 
 	add_settings_field( 
 		'mc_pref_apikey', 
 		__( 'Enter your MailChimp API Key', 'mailchimp-preferences' ), 
 		'mc_pref_apikey_render', 
-		'pluginPage', 
-		'mc_pref_pluginPage_section' 
+		'mcPrefSettings', 
+		'mc_pref_mcPrefSettings_section' 
 	);
 
 	add_settings_field( 
 		'mc_pref_list_id', 
 		__( 'Choose the list you want to use', 'mailchimp-preferences' ), 
 		'mc_pref_list_id_render', 
-		'pluginPage', 
-		'mc_pref_pluginPage_section' 
+		'mcPrefSettings', 
+		'mc_pref_mcPrefSettings_section' 
 	);
 
 
@@ -96,7 +96,7 @@ function mc_pref_apikey_render() {
 	$options = get_option( 'mc_pref_settings' );
 	?>
     <label for="mc_pref_settings[mc_pref_apikey]"><?php _e('API key:', 'mailchimp-prefs'); ?></label>
-	<input type='text' name='mc_pref_settings[mc_pref_apikey]' value='<?php echo $options['mc_pref_apikey']; ?>'>
+	<input type='text' name='mc_pref_settings[mc_pref_apikey]' id="apikey" value='<?php echo $options['mc_pref_apikey']; ?>'>
 	<?php
 
 }
@@ -123,17 +123,19 @@ function mc_pref_settings_section_callback(  ) {
 function mc_pref_options_page() { 
 
 	?>
+    <div class="mailchimp_pref_wrap">
 	<form action='options.php' method='post'>
 
 		<h2><?php _e('MailChimp Preferences', 'mailchimp-prefs'); ?></h2>
 
 		<?php
-		settings_fields( 'pluginPage' );
-		do_settings_sections( 'pluginPage' );
+		settings_fields( 'mcPrefSettings' );
+		do_settings_sections( 'mcPrefSettings' );
 		submit_button();
 		?>
 
 	</form>
+    </div>
 	<?php
 
 }

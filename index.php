@@ -25,6 +25,14 @@ function mc_pref_textdomain() {
 	    
     // Call in the options page for the admin
     include_once( MAILCHIMP_PREF_PATH . 'options.php' );
+     
+    // Call in admin options page settings
+    add_action( 'admin_enqueue_scripts', 'mc_pref_styles_scripts_admin');
+    function mc_pref_styles_scripts_admin(){
+        
+        wp_enqueue_style( 'mailchimp-pref', MAILCHIMP_PREF_URL . 'css/mailchimp-pref.min.css' ); // Main dashboard styles
+
+    }
 
 } else {
 
