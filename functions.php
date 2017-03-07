@@ -139,7 +139,7 @@ function mc_update( $mailchimp_auth, $userdata ){
 	$interests = get_user_meta( $userdata->id, $mailchimp_interests, true );
 
 	// Set up the response to send to MailChimp
-	$content = array( 'email_address' => $user_email, 'interests' => $interests);
+	$content = array( 'email_address' => $user_email, 'status' => 'subscribed');
 
 	$input = json_encode( $content ); // Make it so MailChimp understands
 	

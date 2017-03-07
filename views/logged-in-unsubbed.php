@@ -19,7 +19,7 @@ function mc_pref_view_logged_in_unsubbed( $mailchimp_auth, $userdata ){
     if ( isset( $_POST['subscribe'] ) ) {
 
         // Run an update
-        //$message = mc_subscribe( $mailchimp_auth, $userdata );
+        $message = mc_update( $mailchimp_auth, $userdata );
         echo $message;
 
     }
