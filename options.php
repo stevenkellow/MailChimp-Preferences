@@ -126,7 +126,7 @@ function mc_pref_options_page() {
     <div class="mailchimp_pref_wrap">
 	<form action='options.php' method='post'>
 
-		<h2><?php _e('MailChimp Preferences', 'mailchimp-prefs'); ?></h2>
+		<h1><?php _e('MailChimp Preferences', 'mailchimp-prefs'); ?></h1>
 
 		<?php
 		settings_fields( 'mcPrefSettings' );
