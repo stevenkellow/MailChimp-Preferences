@@ -8,7 +8,7 @@
 
 /* --------------------------------------------------------------------- */
 if (!function_exists('mc_get_lists')) {
-function mc_get_lists(){
+function mc_get_lists( $mailchimp_auth ){
     
     // Get all lists from MailChimp
 
@@ -24,10 +24,10 @@ function mc_get_lists(){
 
         // Get details about each list
         
-        foreach( $data["lists"] as $list ){
+        foreach( $data['lists'] as $list ){
             
-            $list_id = $list["id"];
-            $list_name = $list["name"];
+            $list_id = $list['id'];
+            $list_name = $list['name'];
             
             // If the list doesn't match what's stored in wordpress
             $current_list = $mailchimp_lists[$list_id];
@@ -36,14 +36,14 @@ function mc_get_lists(){
             if( ! $current_list ){
                 
                 // Add the MailChimp List details to the array
-                $mailchimp_lists[$list_id] = array( "list_name" => $list_name, "interests" => '' );
+                $mailchimp_lists[$list_id] = array( 'list_name' => $list_name, 'interests' => '' );
                 
             } else {
                 
                 // In case we change the list name on the MailChimp side
-                if( $list_name !== $mailchimp_lists[$list_id]["list_name"] ){
+                if( $list_name !== $mailchimp_lists[$list_id]['list_name'] ){
                     
-                    $mailchimp_lists[$list_id]["list_name"] = $list_name;
+                    $mailchimp_lists[$list_id]['list_name'] = $list_name;
                     
                 }
                 
@@ -72,7 +72,7 @@ function mc_get_lists(){
 }
 /* --------------------------------------------------------------------- */
 if (!function_exists('mc_get_list_details')) {
-function mc_get_list_details(){
+function mc_get_list_details( $mailchimp_auth ){
     
 
 	$url = 'https://' . $server . '.api.mailchimp.com/3.0/lists/' . $list_id;
