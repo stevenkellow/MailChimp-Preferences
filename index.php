@@ -65,7 +65,7 @@ function mailchimp_preferences(){
 	$mailchimp_auth->api = $options['mc_pref_apikey']; // API Key
 	$mailchimp_auth->list_id = $options['mc_pref_list_id']; // List ID
 	
-	$mailchimp_auth->name = 'user:' . $apikey;
+	$mailchimp_auth->name = 'user:' . $mailchimp_auth->api;
 
 	$user_id = get_current_user_id();
 	$userdata = get_userdata( $user_id );
@@ -94,13 +94,18 @@ function mailchimp_preferences(){
     } else {
         
         // If user's got a MailChimp ID saved then we're registered
-        if( get_user_meta( $user_id, 'mailchimp_id' ) ){
+        if( get_user_meta( $user_id, 'mailchimp_id', true ) ){
             
+            // print_r( get_user_meta( $user_id ) );
+            //echo get_user_meta( $user_id, 'mailchimp_id', true );
+            //echo strtotime( current_time( 'mysql' ) );
+            
+
             // Check whether the user is subscribed or not
-            $status = mc_check();
+            $status = mc_check( $mailchimp_auth, $userdata );
             
             
-            if( $status == 'subscribed'){
+            if( $status == 'Subscribed'){
                 
                 // Subscribed and logged in - so show user preferences
                 include_once( MAILCHIMP_PREF_PATH . '/views/logged-in-subbed.php' );
@@ -117,6 +122,7 @@ function mailchimp_preferences(){
                 
             }
             
+
             
         } else {
             

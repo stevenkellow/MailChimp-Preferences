@@ -22,16 +22,16 @@ function mc_pref_form_preferences( $mailchimp_auth, $userdata ){
 
             echo '<h5>' . __( 'Tick the box to receive emails about these topics:', 'mailchimp-prefs' ) . '</h5>';
 
-        }
+            foreach( $interests as $interest ){
 
-        foreach( $interests as $interest ){
+                // Echo an input box with label for the interest, and check it if it's been ticked in the user's info
 
-            // Echo an input box with label for the interest, and check it if it's been ticked in the user's info
-
-            echo '<label for="' . $interest['id'] . '">' . $interest['name'] . ' : </label>';
-            echo '<input type="checkbox" name="' . $interest['id'] . '" value="' . $interest['name'] . '" . ' . (in_array( $interest['id'], $user_interests )?'checked':'') . '><br/>';
+                echo '<label for="' . $interest['id'] . '">' . $interest['name'] . ' : </label>';
+                echo '<input type="checkbox" name="' . $interest['id'] . '" value="' . $interest['name'] . '" . ' . (in_array( $interest['id'], $user_interests )?'checked':'') . '><br/>';
 
 
+            }
+            
         }
 
         ?>

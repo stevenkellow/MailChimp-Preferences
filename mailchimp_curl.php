@@ -53,6 +53,5 @@ function mailchimp_curl($url, $user_auth, $rest = 'GET', $input = null){
     // Send the data back to the function calling the curl
     return $data;
 
-
-
+    
 }

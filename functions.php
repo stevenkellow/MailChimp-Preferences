@@ -62,17 +62,17 @@ function mc_unsub( $mailchimp_auth, $userdata ){
 	// Unsub
 
 	// Get the user's preferred MailChimp email
-    if( $mailchimp_id = get_user_meta( $userdata->id, 'mailchimp_id' ) ){
+    if( $mailchimp_id = get_user_meta( $userdata->id, 'mailchimp_id', true ) ){
         
         $user_hash = $mailchimp_id;
         
-    } elseif( $user_email = get_user_meta( $userdata->id, 'mailchimp_email' ) ) {
+    } elseif( $user_email = get_user_meta( $userdata->id, 'mailchimp_email', true ) ) {
        
         $user_hash = md5( strtolower( $user_email ) );
         
     } else {
         
-        $user_email = get_user_meta( $userdata->user_email );
+        $user_email = get_user_meta( $userdata->id, $userdata->user_email, true );
         $user_hash = md5( strtolower( $user_email ) );
         
     }
@@ -117,17 +117,17 @@ function mc_update( $mailchimp_auth, $userdata ){
 	// Add/Update interests
 
 	// Get the user's preferred MailChimp email
-    if( $mailchimp_id = get_user_meta( $userdata->id, 'mailchimp_id' ) ){
+    if( $mailchimp_id = get_user_meta( $userdata->id, 'mailchimp_id', true ) ){
         
         $user_hash = $mailchimp_id;
         
-    } elseif( $user_email = get_user_meta( $userdata->id, 'mailchimp_email' ) ) {
+    } elseif( $user_email = get_user_meta( $userdata->id, 'mailchimp_email', true ) ) {
        
         $user_hash = md5( strtolower( $user_email ) );
         
     } else {
         
-        $user_email = get_user_meta( $userdata->user_email );
+        $user_email = get_user_meta( $userdata->id, $userdata->user_email, true );
         $user_hash = md5( strtolower( $user_email ) );
         
     }
@@ -136,7 +136,7 @@ function mc_update( $mailchimp_auth, $userdata ){
 	$rest = 'PATCH';
 
     // Get user interests saved on WP side
-	$interests = get_user_meta( $userdata->id, $mailchimp_interests );
+	$interests = get_user_meta( $userdata->id, $mailchimp_interests, true );
 
 	// Set up the response to send to MailChimp
 	$content = array( 'email_address' => $user_email, 'interests' => $interests);
@@ -175,11 +175,11 @@ function mc_check( $mailchimp_auth, $userdata ){
 	// Check subscriber status (in case someone unsubs)
     
     // Get original status
-    $status = get_user_meta( $userdata->id, 'mailchimp_status' );
+    $status = get_user_meta( $userdata->id, 'mailchimp_status', true );
     
     // Get current time and compare to anything saved
     $time = strtotime( current_time( 'mysql' ) );
-    $last_check = strtotime( get_user_meta( $userdata->id, 'mailchimp_update_time' ) );
+    $last_check = strtotime( get_user_meta( $userdata->id, 'mailchimp_update_time', true ) );
     
     $time_diff = $time - $last_check;
     
@@ -187,17 +187,17 @@ function mc_check( $mailchimp_auth, $userdata ){
     if( $time_diff > 86400 ){
     
         // Get the user's preferred MailChimp email
-        if( $mailchimp_id = get_user_meta( $userdata->id, 'mailchimp_id' ) ){
+        if( $mailchimp_id = get_user_meta( $userdata->id, 'mailchimp_id', true ) ){
 
             $user_hash = $mailchimp_id;
 
-        } elseif( $user_email = get_user_meta( $userdata->id, 'mailchimp_email' ) ) {
+        } elseif( $user_email = get_user_meta( $userdata->id, 'mailchimp_email', true ) ) {
 
             $user_hash = md5( strtolower( $user_email ) );
 
         } else {
 
-            $user_email = get_user_meta( $userdata->user_email );
+            $user_email = get_user_meta( $userdata->id, $userdata->user_email, true );
             $user_hash = md5( strtolower( $user_email ) );
 
         }

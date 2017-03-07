@@ -27,8 +27,9 @@ function mc_pref_view_logged_in_not_registered( $mailchimp_auth, $userdata ){
     if ( isset( $_POST['subscribe'] ) ) {
 
         // Run a subscribe
-        $message = 'Subscribed'; // mc_subscribe();
+        $message = mc_subscribe( $mailchimp_auth, $userdata );
         echo $message;
+        
 
     }
     ?>
