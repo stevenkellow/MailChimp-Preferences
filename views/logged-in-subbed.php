@@ -31,7 +31,7 @@ function mc_pref_view_logged_in_subbed( $mailchimp_auth, $userdata ){
     if ( isset( $_POST['unsub'] ) ) {
 
         // Run an unsubscribe :'(
-        //$message = mc_unsub();
+        $message = mc_unsub( $mailchimp_auth, $userdata );
         echo $message;
 
     }
