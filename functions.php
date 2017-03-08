@@ -46,6 +46,9 @@ function mc_subscribe( $mailchimp_auth, $userdata ){
         update_user_meta( $userdata->id, 'mailchimp_interests', $mailchimp_interests );
         update_user_meta( $userdata->id, 'mailchimp_update_time', $time ); // Store current timestamp in a user_meta as the last check
         
+        // Run successful action -  subscribed
+        do_action( 'mc_pref_subscribed' );
+        
         return __('Successfully subscribed!', 'mailchimp-prefs');
         
     } else {
@@ -100,6 +103,8 @@ function mc_unsub( $mailchimp_auth, $userdata ){
         update_user_meta( $userdata->id, 'mailchimp_status', $mailchimp_status );
         update_user_meta( $userdata->id, 'mailchimp_update_time', $time ); // Store current timestamp in a user_meta as the last check
         
+        // Run successful action -  unsubscribed
+        do_action( 'mc_pref_unsubscribed' );
 
         return __('Successfully unsubscribed', 'mailchimp-prefs');
         
@@ -157,6 +162,9 @@ function mc_update( $mailchimp_auth, $userdata ){
         // Maybe save to WordPress?
         update_user_meta( $userdata->id, 'mailchimp_interests', $mailchimp_interests );
         update_user_meta( $userdata->id, 'mailchimp_update_time', $time ); // Store current timestamp in a user_meta as the last check
+        
+        // Run successful action -  updated
+        do_action( 'mc_pref_updated' );
         
         return __('Details successfully updated.', 'mailchimp-prefs');
         
@@ -220,22 +228,27 @@ function mc_check( $mailchimp_auth, $userdata ){
             
             if( $data['status'] == 'subscribed' ){
             
+                // Get the customer's new MailChimp interests
+                $mailchimp_interests = $data['interests'];
 
-            // Get the customer's new MailChimp interests
-            $mailchimp_interests = $data['interests'];
 
+                // Maybe save to WordPress?
+                update_user_meta( $userdata->id, 'mailchimp_status', 'subscribed' );
+                update_user_meta( $userdata->id, 'mailchimp_update_time', $time ); // Store current timestamp in a user_meta as the last check
+                update_user_meta( $userdata->id, 'mailchimp_interests', $mailchimp_interests );
 
-            // Maybe save to WordPress?
-            update_user_meta( $userdata->id, 'mailchimp_status', 'subscribed' );
-            update_user_meta( $userdata->id, 'mailchimp_update_time', $time ); // Store current timestamp in a user_meta as the last check
-            update_user_meta( $userdata->id, 'mailchimp_interests', $mailchimp_interests );
-            
-            return __('Subscribed', 'mailchimp-prefs');
+                // Run successful action -  subscribed
+                do_action( 'mc_pref_subscribed' );
+
+                return __('Subscribed', 'mailchimp-prefs');
                 
                 
             } elseif ( $data['status'] == 'unsubscribed' ){
                 
                 update_user_meta( $userdata->id, 'mailchimp_status', 'unsubscribed' );
+                
+                // Run successful action -  registered
+                do_action( 'mc_pref_unsubscribed' );
                 
                 return __('Unsubscribed', 'mailchimp-prefs');
                 
@@ -284,17 +297,28 @@ function mc_register( $mailchimp_auth, $userdata, $signup ){
                 // $message = mc_subscribe( $mailchimp_auth, $userdata );
             
                 if( $message !== 'error' ){
+                    
+                    
+                    // Run successful action -  subscribed & registered
+                    do_action( 'mc_pref_subscribed' );
+                    do_action( 'mc_pref_registered' );
 
                     return __('Successfully registered and subscribed!', 'mailchimp-prefs');
 
                 } else {
 
+                    // Run successful action -  registered
+                    do_action( 'mc_pref_registered' );
+                    
                     return __('Successfully registered but subscription failed', 'mailchimp-prefs');
 
                 }
                 
                 
             } else {
+                
+                // Run successful action -  registered
+                do_action( 'mc_pref_registered' );
                 
                 // Successfully created site account but not MailChimp
                 return __('Successfully registered', 'mailchimp-prefs');
