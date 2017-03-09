@@ -63,17 +63,6 @@ function mc_pref_view_logged_out( $mailchimp_auth, $userdata ){
     ?>
     <div class="mailchimp_dashboard"><?php
 
-    /*
-    Form
-
-    login to site
-
-    register to site
-
-    sign-up without logging in or registering
-    */
-
-
     // If logging in/registering
     include_once( MAILCHIMP_PREF_PATH . '/forms/login-form.php');
     echo mc_pref_form_login( $mailchimp_auth );
