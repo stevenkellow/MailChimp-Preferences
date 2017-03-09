@@ -1,3 +1,4 @@
+/* Main dashboard */
 div.mailchimp_dashboard {
     
     form{
@@ -31,6 +32,39 @@ div.mailchimp_dashboard {
     
 }
 
+/* Box for notifications or alerts */
+.mailchimp-alert-box{
+    border: solid 1px #000;
+    padding: 10px;
+    margin-bottom: 1em;    
+    
+}
+
+.mailchimp-alert-box:empty{
+    display: none;
+}
+
+.mailchimp-alert-fail{
+    @extend .mailchimp-alert-box;
+    background-color: rgba(239, 14, 44, 0.5);
+}
+
+.mailchimp-alert-info{
+    @extend .mailchimp-alert-box;
+    background-color: rgba(103, 184, 224, 0.5);
+}
+
+.mailchimp-alert-warning{
+    @extend .mailchimp-alert-box;
+    background-color: rgba(244, 231, 107, 0.5);
+}
+
+.mailchimp-alert-success{
+    @extend .mailchimp-alert-box;
+    background-color: rgba(87, 224, 87, 0.5);
+}
+
+/* Admin styles */
 div.mailchimp_pref_wrap{
     
     #apikey{

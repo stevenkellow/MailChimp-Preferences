@@ -7,34 +7,7 @@
 function mc_pref_view_logged_out( $mailchimp_auth, $userdata ){
     
     ob_start();
-    ?>
-    <div class="mailchimp_dashboard"><?php
-
-    /*
-    Form
-
-    login to site
-
-    register to site
-
-    sign-up without logging in or registering
-    */
-
-
-    // If logging in/registering
-    include_once( MAILCHIMP_PREF_PATH . '/forms/login-form.php');
-    echo mc_pref_form_login( $mailchimp_auth );
-
-    // If registering call
-    include_once( MAILCHIMP_PREF_PATH . '/forms/registration-form.php');
-    echo mc_pref_form_register($mailchimp_auth );
-
-    // If signing up to newsletter without account
-    include_once( MAILCHIMP_PREF_PATH . '/forms/subscribe-form.php');
-    echo mc_pref_form_subscribe( $mailchimp_auth );
-
-
-
+    
     if ( isset( $_POST['login'] ) ) {
 
         function mc_pref_login(){
@@ -85,6 +58,34 @@ function mc_pref_view_logged_out( $mailchimp_auth, $userdata ){
         echo $message;
 
     }
+    
+    
+    ?>
+    <div class="mailchimp_dashboard"><?php
+
+    /*
+    Form
+
+    login to site
+
+    register to site
+
+    sign-up without logging in or registering
+    */
+
+
+    // If logging in/registering
+    include_once( MAILCHIMP_PREF_PATH . '/forms/login-form.php');
+    echo mc_pref_form_login( $mailchimp_auth );
+
+    // If registering call
+    include_once( MAILCHIMP_PREF_PATH . '/forms/registration-form.php');
+    echo mc_pref_form_register($mailchimp_auth );
+
+    // If signing up to newsletter without account
+    include_once( MAILCHIMP_PREF_PATH . '/forms/subscribe-form.php');
+    echo mc_pref_form_subscribe( $mailchimp_auth );
+
     ?>
     </div>
     <?php

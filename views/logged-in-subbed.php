@@ -7,18 +7,7 @@
 function mc_pref_view_logged_in_subbed( $mailchimp_auth, $userdata ){
    
     ob_start();
-    ?>
-    <div class="mailchimp_dashboard"><?php
-
-    // Show the preference form
-    include_once( MAILCHIMP_PREF_PATH . '/forms/preference-form.php');
-
-    echo mc_pref_form_preferences( $mailchimp_auth, $userdata );
-
-
-
-
-
+    
     if ( isset( $_POST['update'] ) ) {
 
         // Run an update
@@ -35,6 +24,15 @@ function mc_pref_view_logged_in_subbed( $mailchimp_auth, $userdata ){
         echo $message;
 
     }
+    
+    ?>
+    <div class="mailchimp_dashboard"><?php
+
+    // Show the preference form
+    include_once( MAILCHIMP_PREF_PATH . '/forms/preference-form.php');
+
+    echo mc_pref_form_preferences( $mailchimp_auth, $userdata );
+
     ?>
     </div>
     <?php

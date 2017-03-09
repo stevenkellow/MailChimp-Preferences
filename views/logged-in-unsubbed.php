@@ -7,6 +7,15 @@
 function mc_pref_view_logged_in_unsubbed( $mailchimp_auth, $userdata ){
    
     ob_start();
+    
+    if ( isset( $_POST['subscribe'] ) ) {
+
+        // Run an update
+        $message = mc_update( $mailchimp_auth, $userdata );
+        echo $message;
+
+    }
+    
     ?>
     <div class="mailchimp_dashboard"><?php
 
@@ -15,14 +24,6 @@ function mc_pref_view_logged_in_unsubbed( $mailchimp_auth, $userdata ){
 
     echo mc_pref_form_resubscribe( $mailchimp_auth, $userdata );
 
-
-    if ( isset( $_POST['subscribe'] ) ) {
-
-        // Run an update
-        $message = mc_update( $mailchimp_auth, $userdata );
-        echo $message;
-
-    }
     ?>
     </div>
     <?php
