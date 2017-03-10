@@ -100,6 +100,12 @@ function mailchimp_preferences(){
             
             _e('Log in failed', 'mailchimp-prefs');
             
+        } else {
+            
+            // Make sure we can get  the user details after logging in
+            $user_id = get_current_user_id();
+	        $userdata = get_userdata( $user_id );
+            
         }
         
         

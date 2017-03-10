@@ -37,7 +37,7 @@ function mc_subscribe( $mailchimp_auth, $userdata ){
         $mailchimp_interests = $data['interests']; // Creates an array of interests the users might have (set up in MailChimp)
         
          // Save last update time
-        $time = strtotime( current_time( 'mysql' ) );
+        $time = intval( strtotime( current_time( 'mysql' ) ) );
 
         // Maybe save to WordPress?
         update_user_meta( $userdata->id, 'mailchimp_id', $mailchimp_id );
@@ -97,7 +97,7 @@ function mc_unsub( $mailchimp_auth, $userdata ){
         $mailchimp_status = $data['status'];
 
         // Save last update time
-        $time = strtotime( current_time( 'mysql' ) );
+        $time = intval( strtotime( current_time( 'mysql' ) ) );
         
         // Maybe save to WordPress?
         update_user_meta( $userdata->id, 'mailchimp_status', $mailchimp_status );
@@ -157,7 +157,7 @@ function mc_update( $mailchimp_auth, $userdata ){
         $mailchimp_interests = $data['interests'];
 
         // Save last update time
-        $time = strtotime( current_time( 'mysql' ) );
+        $time = intval( strtotime( current_time( 'mysql' ) ) );
 
         // Maybe save to WordPress?
         update_user_meta( $userdata->id, 'mailchimp_interests', $mailchimp_interests );
@@ -187,7 +187,7 @@ function mc_check( $mailchimp_auth, $userdata ){
     
     // Get current time and compare to anything saved
     $time = strtotime( current_time( 'mysql' ) );
-    $last_check = strtotime( get_user_meta( $userdata->id, 'mailchimp_update_time', true ) );
+    $last_check = get_user_meta( $userdata->id, 'mailchimp_update_time', true );
     
     $time_diff = $time - $last_check;
     
