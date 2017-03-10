@@ -90,13 +90,28 @@ function mailchimp_preferences(){
 	
 	/* -- FRONT-END FUNCTION -- */
     
+    // Check if we want to log a user in or not
+    if ( isset( $_POST['login'] ) ) {
+
+        // Log the user in        
+        $result = mc_login( $_POST['username'], $_POST['password'] );
+        
+        if( ! $result == true ){
+            
+            _e('Log in failed', 'mailchimp-prefs');
+            
+        }
+        
+        
+    }
+    
     // Decide which view to launch
     
     if( ! is_user_logged_in() ){
         
         include_once( MAILCHIMP_PREF_PATH . '/views/logged-out.php' );
         
-        $shortcode_output = mc_pref_view_logged_out( $mailchimp_auth, $userdata );
+        $shortcode_output = mc_pref_view_logged_out( $mailchimp_auth  );
         
         
     } else {

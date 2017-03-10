@@ -346,3 +346,32 @@ function mc_register( $mailchimp_auth, $userdata, $signup ){
     
 }
 }
+/*-------------------------------------------------------------------------------*/
+// Run before the headers and cookies are sent. 
+add_action( 'after_setup_theme', 'mc_login' );
+
+if (!function_exists('mc_login')) {
+function mc_login(){
+    
+    // Log user in
+    $result = wp_signon( array( 'user_login' => $_POST['username'], 'user_password' => $_POST['password'] ), true );
+
+    // Handle the result
+    if( is_wp_error( $result ) ){
+
+        // Error, so turn back
+        return false;
+
+    } else {
+        
+        // Creat the user so WordPress knows who's logged in
+        wp_set_current_user( $result->id );
+
+        // User logged in
+        return true;
+
+
+    }
+
+}
+}
