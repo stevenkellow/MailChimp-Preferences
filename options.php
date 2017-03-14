@@ -3,7 +3,7 @@ add_action( 'admin_menu', 'mc_pref_add_admin_menu' );
 add_action( 'admin_init', 'mc_pref_settings_init' );
 
 
-function mc_pref_add_admin_menu(  ) { 
+function mc_pref_add_admin_menu() { 
 
 	add_menu_page( 'MailChimp Preferences', 'MailChimp Preferences', 'manage_options', 'mailchimp_preferences', 'mc_pref_options_page' );
 
@@ -113,7 +113,7 @@ function mc_pref_list_id_render() {
 }
 
 
-function mc_pref_settings_section_callback(  ) { 
+function mc_pref_settings_section_callback() { 
 
 	echo __( 'Enter your API details to connect your site with MailChimp', 'mailchimp-preferences' );
 
