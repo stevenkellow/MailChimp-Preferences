@@ -63,7 +63,7 @@ function mc_pref_server_render() {
     // Get the currently set server
     $value = $options['mc_pref_server'];
 
-    for ($i = 1; $i <= 14; $i++) {
+    for ($i = 1; $i <= 15; $i++) {
         
         $curr_server = 'us' . $i;
 
