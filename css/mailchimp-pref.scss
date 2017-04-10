@@ -11,6 +11,7 @@ div.mailchimp_dashboard {
         width: 100px;
         display: inline-block;
         float: left;
+        margin-top: 12px;
     }
 
     label[for="mailchimp"]{
@@ -24,6 +25,7 @@ div.mailchimp_dashboard {
 
     input[type="text"], input[type="email"], input[type="password"] {
         width: 250px;
+        margin-top: 5px;
     }
     
     input[type="submit"]{
