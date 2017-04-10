@@ -40,12 +40,18 @@ function mc_pref_textdomain() {
     // Call in the front end styles
     add_action( 'wp_enqueue_scripts', 'mc_pref_styles_scripts' );
     function mc_pref_styles_scripts() {
+        
+        /* Only call in the styles and scripts if the page needs them 
+        global $post;
+        if( is_a( $post, 'WP_Post' ) && ( has_shortcode( $post->post_content, 'mailchimp_dashboard' ) || has_shortcode( $post->post_content, 'mailchimp-dashboard' ) { */
 
         wp_enqueue_style( 'mailchimp-pref', MAILCHIMP_PREF_URL . 'css/mailchimp-pref.min.css' ); // Main dashboard styles
         wp_enqueue_style( 'mailchimp-pref-tabs', MAILCHIMP_PREF_URL . 'css/mailchimp-tabs.min.css' ); // Styles for tabbed pages
         
         wp_enqueue_script( 'mailchimp-pref-tabs', MAILCHIMP_PREF_URL . 'js/mailchimp-tabs.min.js', array('jquery')); // Script for tabbed pages
         wp_enqueue_script( 'parsley', MAILCHIMP_PREF_URL . 'js/parsley.min.js', array('jquery')); // Parsley for form validation
+        
+        /* } */
     }
         
 }
@@ -54,8 +60,6 @@ function mc_pref_textdomain() {
 add_shortcode( 'mailchimp_dashboard', 'mailchimp_preferences' );
 add_shortcode( 'mailchimp-dashboard', 'mailchimp_preferences' );
 function mailchimp_preferences(){
-	
-    // $options = get_option( 'mc_pref_settings' );
     
 	// Globals
     
