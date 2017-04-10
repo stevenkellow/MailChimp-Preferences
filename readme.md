@@ -23,3 +23,7 @@ mc_unsub() - unsubscribe users
 mc_update() - update user's details in MailChimp  
 mc_check() - make sure user is still subscribed  
 mc_register() - register a WordPress user and subscribe to MailChimp  
+
+#### Wanna help?
+
+This plugin is being actively developed on GitHub, feel free to create issues or make a pull request at [https://github.com/stevenkellow/MailChimp-Preferences/](https://github.com/stevenkellow/MailChimp-Preferences/)
