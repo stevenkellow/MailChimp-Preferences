@@ -7,7 +7,6 @@
 */
 
 /* --------------------------------------------------------------------- */
-if (!function_exists('mc_subscribe')) {
 function mc_subscribe( $mailchimp_auth, $userdata ){
 // Subscribe
 
@@ -58,9 +57,7 @@ function mc_subscribe( $mailchimp_auth, $userdata ){
     }
 
 }
-}
 /* ------------------------------------------------------------------------------------ */
-if (!function_exists('mc_unsub')) {
 function mc_unsub( $mailchimp_auth, $userdata ){
 	// Unsub
 
@@ -115,9 +112,7 @@ function mc_unsub( $mailchimp_auth, $userdata ){
     }
 
 }
-}
 /* ------------------------------------------------------------------------------------ */
-if (!function_exists('mc_update')) {
 function mc_update( $mailchimp_auth, $userdata ){
 	// Add/Update interests
 
@@ -175,9 +170,7 @@ function mc_update( $mailchimp_auth, $userdata ){
     }
 
 }
-}
 /*-------------------------------------------------------------------------------*/
-if (!function_exists('mc_check')) {
 function mc_check( $mailchimp_auth, $userdata ){
 	
 	// Check subscriber status (in case someone unsubs)
@@ -273,9 +266,7 @@ function mc_check( $mailchimp_auth, $userdata ){
 	
 	
 }
-}
 /*-------------------------------------------------------------------------------*/
-if (!function_exists('mc_register')) {
 function mc_register( $mailchimp_auth, $userdata, $signup ){
     
     // Check incase the user's email is already on file, and if it is then let's avoid the function
@@ -345,12 +336,9 @@ function mc_register( $mailchimp_auth, $userdata, $signup ){
 
     
 }
-}
 /*-------------------------------------------------------------------------------*/
 // Run before the headers and cookies are sent. 
 add_action( 'after_setup_theme', 'mc_login' );
-
-if (!function_exists('mc_login')) {
 function mc_login(){
     
     // Log user in
@@ -364,7 +352,7 @@ function mc_login(){
 
     } else {
         
-        // Creat the user so WordPress knows who's logged in
+        // Create the user so WordPress knows who's logged in
         wp_set_current_user( $result->id );
 
         // User logged in
@@ -373,5 +361,4 @@ function mc_login(){
 
     }
 
-}
 }

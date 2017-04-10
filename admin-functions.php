@@ -7,7 +7,6 @@
 */
 
 /* --------------------------------------------------------------------- */
-if (!function_exists('mc_get_lists')) {
 function mc_get_lists( $mailchimp_auth ){
     
     // Get all lists from MailChimp
@@ -66,12 +65,8 @@ function mc_get_lists( $mailchimp_auth ){
     }
     
     
-    
-    
-}
 }
 /* --------------------------------------------------------------------- */
-if (!function_exists('mc_get_list_details')) {
 function mc_get_list_details( $mailchimp_auth ){
     
 
@@ -95,10 +90,6 @@ function mc_get_list_details( $mailchimp_auth ){
         return 'CURL error';
         
     }
+ 
     
-    
-    
-    
-    
-}
 }
