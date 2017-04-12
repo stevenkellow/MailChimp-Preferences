@@ -145,7 +145,7 @@ function mailchimp_preferences(){
             $status = mc_check( $mailchimp_auth, $userdata );
             
             
-            if( $status == 'Subscribed'){
+            if( $status == 'subscribed'){
                 
                 // Subscribed and logged in - so show user preferences
                 include_once( MAILCHIMP_PREF_PATH . '/views/logged-in-subbed.php' );
