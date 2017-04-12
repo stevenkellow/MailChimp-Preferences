@@ -36,8 +36,8 @@ function mc_pref_form_preferences( $mailchimp_auth, $userdata ){
 
         ?>
         <input type="submit" name="update" value="<?php _e( 'Change Preferences', 'mailchimp-prefs' ); ?>">
-        <br/>
-        <h5><?php _e( 'Unsubscribe: ', 'mailchimp-prefs' ); ?></h5>
+        <br/><br/>
+        <h4><?php _e( 'Unsubscribe: ', 'mailchimp-prefs' ); ?></h4>
         <p><?php _e( 'Not want to receive newsletter emails anymore?  Click below to unsubscribe.', 'mailchimp-prefs' ); ?></p>
         <input type="submit" name="unsub" value="<?php _e( 'Unsubscribe', 'mailchimp-prefs' ); ?>">
     </form>

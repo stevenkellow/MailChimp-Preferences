@@ -81,7 +81,7 @@ function mc_unsub( $mailchimp_auth, $userdata ){
 	$rest = 'PATCH';
 
 	// Tell MailChimp we're unsubbing this email address
-	$content= array( 'email_address' => $user_email, 'status' => 'unsubscribed');
+	$content = array( 'email_address' => $user_email, 'status' => 'unsubscribed');
 
 	$input = json_encode( $content ); // Make it so MailChimp understands
 
@@ -230,8 +230,13 @@ function mc_check( $mailchimp_auth, $userdata ){
                 update_user_meta( $userdata->id, 'mailchimp_update_time', $time ); // Store current timestamp in a user_meta as the last check
                 update_user_meta( $userdata->id, 'mailchimp_interests', $mailchimp_interests );
 
-                // Run successful action -  subscribed
-                do_action( 'mc_pref_subscribed' );
+                // If the MailChimp status is different from what we have on WP, then run an action
+                if( $data['status'] !== $status ){
+                    
+                    // Run successful action -  subscribed
+                    do_action( 'mc_pref_subscribed' );
+                    
+                }
 
                 return __('Subscribed', 'mailchimp-prefs');
                 
@@ -240,8 +245,13 @@ function mc_check( $mailchimp_auth, $userdata ){
                 
                 update_user_meta( $userdata->id, 'mailchimp_status', 'unsubscribed' );
                 
-                // Run successful action -  registered
-                do_action( 'mc_pref_unsubscribed' );
+                // If the MailChimp status is different from what we have on WP, then run an action
+                if( $data['status'] !== $status ){
+                    
+                    // Run successful action -  unsubscribed
+                    do_action( 'mc_pref_unsubscribed' );
+                    
+                }
                 
                 return __('Unsubscribed', 'mailchimp-prefs');
                 
