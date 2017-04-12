@@ -7,10 +7,10 @@ function mc_pref_form_preferences( $mailchimp_auth, $userdata ){
    
     ob_start();
     ?>
-    <form id="mailchimp-pref-preference-form" action="<?php echo get_the_permalink();?>" method="post" parsley-validate>
+    <form id="mailchimp-pref-preference-form" action="<?php echo get_the_permalink();?>" method="post" class="mailchimp-pref-form">
         <h3><?php _e( 'MailChimp Preferences', 'mailchimp-prefs' ); ?></h3>
         <label for="email"><?php _e( 'Email address: ', 'mailchimp-prefs' ); ?></label>
-        <input type="text" name="email" value="<?php echo $userdata->user_email; ?>" parsley-trigger="change" parsley-required="true">
+        <input type="text" name="email" value="<?php echo $userdata->user_email; ?>" data-parsley-trigger="change" required>
         <br/>
         <?php
         // Get the interests on this list

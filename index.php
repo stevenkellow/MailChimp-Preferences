@@ -30,7 +30,7 @@ if( is_admin() ){
     add_action( 'admin_enqueue_scripts', 'mc_pref_styles_scripts_admin');
     function mc_pref_styles_scripts_admin(){
         
-        wp_enqueue_style( 'mailchimp-pref', MAILCHIMP_PREF_URL . 'css/mailchimp-pref.min.css' ); // Main dashboard styles
+        wp_enqueue_style( 'mailchimp-pref-css', MAILCHIMP_PREF_URL . 'css/mailchimp-pref.min.css' ); // Main dashboard styles
 
     }
 
@@ -45,10 +45,10 @@ if( is_admin() ){
         global $post;
         if( is_a( $post, 'WP_Post' ) && ( has_shortcode( $post->post_content, 'mailchimp_dashboard' ) || has_shortcode( $post->post_content, 'mailchimp-dashboard' ) { */
 
-        wp_enqueue_style( 'mailchimp-pref', MAILCHIMP_PREF_URL . 'css/mailchimp-pref.min.css' ); // Main dashboard styles
+        wp_enqueue_style( 'mailchimp-pref-css', MAILCHIMP_PREF_URL . 'css/mailchimp-pref.min.css' ); // Main dashboard styles
         wp_enqueue_style( 'mailchimp-pref-tabs', MAILCHIMP_PREF_URL . 'css/mailchimp-tabs.min.css' ); // Styles for tabbed pages
         
-        wp_enqueue_script( 'mailchimp-pref-tabs', MAILCHIMP_PREF_URL . 'js/mailchimp-tabs.min.js', array('jquery')); // Script for tabbed pages
+        wp_enqueue_script( 'mailchimp-pref-js', MAILCHIMP_PREF_URL . 'js/mailchimp-pref.min.js', array('jquery')); // Script for tabbed pages
         wp_enqueue_script( 'parsley', 'https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.7.0/parsley.min.js', array('jquery')); // Parsley for form validation
         
         /* } */

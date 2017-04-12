@@ -1,4 +1,8 @@
 jQuery(document).ready(function($) {
+    // Call in parsley
+    $('.mailchimp-pref-form').parsley();
+    
+    // Run the tabs
     $(".mailchimp-tabs-menu a").click(function(event) {
         event.preventDefault();
         $(this).parent().addClass("current");
