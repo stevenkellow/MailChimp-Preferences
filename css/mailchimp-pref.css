@@ -27,6 +27,14 @@ div.mailchimp_dashboard input[type="submit"] {
 div.mailchimp_dashboard h4 {
   margin-top: 10px;
 }
+div.mailchimp_dashboard ul.parsley-errors-list {
+  list-style: none;
+  margin-left: 60px;
+  color: rgba(239, 14, 44, 0.5);
+}
+div.mailchimp_dashboard input.parsley-error {
+  border-color: rgba(239, 14, 44, 0.5);
+}
 
 /* Box for notifications or alerts */
 .mailchimp-alert-box, .mailchimp-alert-fail, .mailchimp-alert-info, .mailchimp-alert-warning, .mailchimp-alert-success {

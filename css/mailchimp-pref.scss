@@ -1,3 +1,9 @@
+// Colours
+$red: rgba(239, 14, 44, 0.5);
+$blue: rgba(103, 184, 224, 0.5);
+$yellow: rgba(244, 231, 107, 0.5);
+$green: rgba(87, 224, 87, 0.5);
+
 /* Main dashboard */
 div.mailchimp_dashboard {
     
@@ -36,6 +42,17 @@ div.mailchimp_dashboard {
         margin-top: 10px;
     }
     
+    // Parsley stuff
+    ul.parsley-errors-list{
+        list-style: none;
+        margin-left: 60px;
+        color: $red;
+    }
+    
+    input.parsley-error{
+        border-color: $red;
+    }
+    
 }
 
 /* Box for notifications or alerts */
@@ -52,22 +69,22 @@ div.mailchimp_dashboard {
 
 .mailchimp-alert-fail{
     @extend .mailchimp-alert-box;
-    background-color: rgba(239, 14, 44, 0.5);
+    background-color: $red;
 }
 
 .mailchimp-alert-info{
     @extend .mailchimp-alert-box;
-    background-color: rgba(103, 184, 224, 0.5);
+    background-color: $blue;
 }
 
 .mailchimp-alert-warning{
     @extend .mailchimp-alert-box;
-    background-color: rgba(244, 231, 107, 0.5);
+    background-color: $yellow;
 }
 
 .mailchimp-alert-success{
     @extend .mailchimp-alert-box;
-    background-color: rgba(87, 224, 87, 0.5);
+    background-color: $green;
 }
 
 /* Admin styles */
