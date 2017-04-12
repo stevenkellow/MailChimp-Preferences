@@ -337,8 +337,6 @@ function mc_register( $mailchimp_auth, $userdata, $signup ){
     
 }
 /*-------------------------------------------------------------------------------*/
-// Run before the headers and cookies are sent. 
-add_action( 'after_setup_theme', 'mc_login' );
 function mc_login(){
     
     // Log user in
@@ -354,6 +352,9 @@ function mc_login(){
         
         // Create the user so WordPress knows who's logged in
         wp_set_current_user( $result->id );
+        
+        // Set login cookies
+        wp_set_auth_cookie( $result->id );
 
         // User logged in
         return true;

@@ -21,7 +21,7 @@ function mc_pref_textdomain() {
 }
 
 // Check what pages, scripts and styles to call in
- if( is_admin() ){
+if( is_admin() ){
 	    
     // Call in the options page for the admin
     include_once( MAILCHIMP_PREF_PATH . 'options.php' );
@@ -56,17 +56,24 @@ function mc_pref_textdomain() {
         
 }
 
+// Check if user is logged in before everything is set up 
+add_action( 'init', 'check_login');
+function check_login(){
+	
+	// Log user in if we can
+	if( ! is_user_logged_in() ){
+		
+		// Log user in if we cans
+		include_once( MAILCHIMP_PREF_PATH . 'functions.php');
+		mc_login();
+		
+	}
+}
+
 // Wrap everything in a nice shortcode to make it easy to use
 add_shortcode( 'mailchimp_dashboard', 'mailchimp_preferences' );
 add_shortcode( 'mailchimp-dashboard', 'mailchimp_preferences' );
 function mailchimp_preferences(){
-    
-	// Globals
-    
-    // Save the location of the plugin for use elsewhere
-    if( ! defined( 'MAILCHIMP_PREF_PATH' ) ){
-        define( 'MAILCHIMP_PREF_PATH', plugin_dir_path( __FILE__ ) );
-    }
     
     // Create class of MailChimp authorisation details
     $mailchimp_auth = new stdClass();
