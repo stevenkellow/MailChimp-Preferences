@@ -20,6 +20,20 @@ function mc_pref_textdomain() {
     load_plugin_textdomain( 'mailchimp-prefs', false, MAILCHIMP_PREF_PATH . '/lang' ); 
 }
 
+// Check if user is logged in before everything is set up 
+add_action( 'init', 'check_login');
+function check_login(){
+	
+	// Log user in if we can
+	if( ! is_user_logged_in() ){
+		
+		// Log user in if we cans
+		include_once( MAILCHIMP_PREF_PATH . 'functions.php');
+		mc_login();
+		
+	}
+}
+
 // Check what pages, scripts and styles to call in
 if( is_admin() ){
 	    
@@ -54,20 +68,6 @@ if( is_admin() ){
         /* } */
     }
         
-}
-
-// Check if user is logged in before everything is set up 
-add_action( 'init', 'check_login');
-function check_login(){
-	
-	// Log user in if we can
-	if( ! is_user_logged_in() ){
-		
-		// Log user in if we cans
-		include_once( MAILCHIMP_PREF_PATH . 'functions.php');
-		mc_login();
-		
-	}
 }
 
 // Wrap everything in a nice shortcode to make it easy to use
