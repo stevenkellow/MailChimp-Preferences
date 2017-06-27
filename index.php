@@ -63,7 +63,7 @@ if( is_admin() ){
         wp_enqueue_style( 'mailchimp-pref-tabs', MAILCHIMP_PREF_URL . 'css/mailchimp-tabs.min.css' ); // Styles for tabbed pages
         
         wp_enqueue_script( 'mailchimp-pref-js', MAILCHIMP_PREF_URL . 'js/mailchimp-pref.min.js', array('jquery')); // Script for tabbed pages
-        wp_enqueue_script( 'parsley', 'https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.7.0/parsley.min.js', array('jquery')); // Parsley for form validation
+        wp_enqueue_script( 'parsley', 'https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.7.2/parsley.min.js', array('jquery'), '2.7.2'); // Parsley for form validation
         
         /* } */
     }
