@@ -350,7 +350,7 @@ function mc_register( $mailchimp_auth, $userdata, $signup ){
 function mc_login(){
     
     // Log user in
-    $result = wp_signon( array( 'user_login' => $_POST['username'], 'user_password' => $_POST['password'] ), 'remember' => true );
+    $result = wp_signon( array( 'user_login' => $_POST['username'], 'user_password' => $_POST['password'], 'remember' => true ) );
 
     // Handle the result
     if( is_wp_error( $result ) ){
